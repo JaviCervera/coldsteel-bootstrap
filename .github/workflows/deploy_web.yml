@@ -10,15 +10,16 @@ jobs:
         run: |
           mkdir coldsteel
           cd coldsteel
-          wget https://github.com/JaviCervera/coldsteel/releases/latest/download/coldsteel-emscripten.zip
+          wget https://github.com/coldsteelengine/coldsteel/releases/latest/download/coldsteel-emscripten.zip
           unzip coldsteel-emscripten.zip
       - name: Build project 🔧
         run: |
           cd coldsteel
           ./csbuild ../project
-      - name: Publish on Netlify 🚀
-        uses: netlify/actions/build@master
-        env:
+      - name: GitHub Pages Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DIR: project.build
+          BRANCH: gh-pages
+          FOLDER: project.build
+          CLEAN: true
