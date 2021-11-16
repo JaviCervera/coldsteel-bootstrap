@@ -16,3 +16,8 @@ jobs:
         run: |
           cd coldsteel
           ./csbuild ../project
+      - name: List contents
+        run: |
+          ls
+          cd project.build
+          ls
