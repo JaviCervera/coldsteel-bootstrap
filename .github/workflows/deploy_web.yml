@@ -12,3 +12,7 @@ jobs:
           cd coldsteel
           wget https://github.com/JaviCervera/coldsteel/releases/latest/download/coldsteel-emscripten.zip
           unzip coldsteel-emscripten.zip
+      - name: Build project 🔧
+        run: |
+          cd coldsteel
+          ./csbuild ../project
